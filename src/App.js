@@ -31,13 +31,13 @@ class App extends Component {
               </div>
           </div>
       </div>*/
-      <TaskCard title = {todo.title} description ={todo.description} key={index}/>
+      <TaskCard title = {todo.title} description ={todo.description} key={index} priority={todo.priority}/>
       )
       
     });
     return (
       <div className="App">
-        <Navigation titulo = {this.state.title} ntareas = {this.state.ntareas} />
+        <Navigation titulo = "Task" ntareas = {todos.length} />
         <div className = "container">
           <div className="row mt-4">
           {todos}
