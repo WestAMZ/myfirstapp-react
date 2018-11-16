@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navigation from './Components/Navigation';
 import TaskCard from './Components/TaskCard';
+import FormTodo from './Components/TodoForm';
 import {todos} from './todos.json';
 console.log(todos);
 class App extends Component {
@@ -18,19 +19,6 @@ class App extends Component {
     const todos = this.state.todos.map((todo,index)=>
     {
       return (
-        /* ITERANDO
-
-
-        <div className="col-md-4" key ={index}>
-          <div className="card mt-4">
-              <div className="card-header">
-                  <h3>{todo.title}</h3>
-              </div>
-              <div className="card-body">
-                  <p>{todo.description}</p>
-              </div>
-          </div>
-      </div>*/
       <TaskCard title = {todo.title} description ={todo.description} key={index} priority={todo.priority}/>
       )
       
@@ -42,6 +30,7 @@ class App extends Component {
           <div className="row mt-4">
           {todos}
           </div>
+          <FormTodo/>
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         
@@ -61,4 +50,18 @@ this.state = {
       "title": "Aplicación de Tareas",
       "ntareas": 10
     }
- */
+
+  --Iterando se podian presentar las tareas 
+    de la siguiente forma sin hacer uso de componentes
+
+
+        <div className="col-md-4" key ={index}>
+          <div className="card mt-4">
+              <div className="card-header">
+                  <h3>{todo.title}</h3>
+              </div>
+              <div className="card-body">
+                  <p>{todo.description}</p>
+              </div>
+          </div>
+      </div>*/
