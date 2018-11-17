@@ -19,7 +19,8 @@ class App extends Component {
     const todos = this.state.todos.map((todo,index)=>
     {
       return (
-      <TaskCard title = {todo.title} description ={todo.description} key={index} priority={todo.priority}/>
+      <TaskCard title = {todo.title} description ={todo.description} key={index} 
+        priority={todo.priority} responsible={todo.responsible}/>
       )
       
     });
@@ -28,9 +29,10 @@ class App extends Component {
         <Navigation titulo = "Task" ntareas = {todos.length} />
         <div className = "container">
           <div className="row mt-4">
-          {todos}
+            <FormTodo/>
+            {todos}
           </div>
-          <FormTodo/>
+          
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         

@@ -12,6 +12,7 @@ class TaskCard extends Component
                     </div>
                     <div className="card-body">
                         <p>{this.props.description}</p>
+                        <strong>{this.props.responsible}</strong>
                     </div>
                 </div>
             </div>
