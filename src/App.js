@@ -14,13 +14,35 @@ class App extends Component {
     this.state = {
       todos
     }
+    this.handleAddTodo = this.handleAddTodo.bind(this);
+  }
+  handleAddTodo(todo)
+  {
+    this.setState({
+     todos: [...this.state.todos,todo]
+    });
+    // console.log(this.state);
+  }
+  removeTodo(index)
+  {
+    if(window.confirm("Are you really sure to delete it?"))
+    {
+      //nota confirm es un metodo del navegador por lo tanto se debe hacer referencia a esto asi : window.confirm("texto");
+      this.setState({
+        todos: this.state.todos.filter((element,i)=>{
+          return index != i
+        })
+        //filter devuelve un nuevo arreglo filtrado, no se devuelven los elementos que no cumplan
+      });
+    }
+    //console.log(index);
   }
   render() {
     const todos = this.state.todos.map((todo,index)=>
     {
       return (
       <TaskCard title = {todo.title} description ={todo.description} key={index} 
-        priority={todo.priority} responsible={todo.responsible}/>
+        priority={todo.priority} responsible={todo.responsible} removeTodo={this.removeTodo.bind(this,index)}/>
       )
       
     });
@@ -29,7 +51,7 @@ class App extends Component {
         <Navigation titulo = "Task" ntareas = {todos.length} />
         <div className = "container">
           <div className="row mt-4">
-            <FormTodo/>
+            <FormTodo onAddTodo = {this.handleAddTodo} />
             {todos}
           </div>
           

@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 
 class TaskCard extends Component
 {
+    constructor()
+    {
+        super();
+        this.handleRemove = this.handleRemove.bind(this);
+    }
     render(){
         return(
             <div className="col-md-4" key={this.key}>
@@ -14,9 +19,18 @@ class TaskCard extends Component
                         <p>{this.props.description}</p>
                         <strong>{this.props.responsible}</strong>
                     </div>
+                    <div className="card-footer">
+                        <button onClick={this.handleRemove} className="btn btn-danger">
+                            Delete
+                        </button>
+                    </div>
                 </div>
             </div>
         );
+    }
+    handleRemove(e)
+    {
+        this.props.removeTodo(this,this.key)
     }
 }
 export default TaskCard;
