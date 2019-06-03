@@ -14,6 +14,13 @@ class App extends Component {
     this.state = {
       todos
     }
+    this.handleAddTodo = this.handleAddTodo.bind(this);
+  }
+  handleAddTodo(todo)
+  {
+    this.setState({
+      todos: [...this.state.todos,todo]
+    })
   }
   render() {
     const todos = this.state.todos.map((todo,index)=>
@@ -29,7 +36,7 @@ class App extends Component {
         <Navigation titulo = "Task" ntareas = {todos.length} />
         <div className = "container">
           <div className="row mt-4">
-            <FormTodo/>
+            <FormTodo onAddTodo={this.handleAddTodo}/>
             {todos}
           </div>
           
